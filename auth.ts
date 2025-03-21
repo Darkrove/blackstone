@@ -1,4 +1,4 @@
-import authConfig from "./auth-config";
+import authConfig from "@/../auth-config";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { UserRole } from "@prisma/client";
 import NextAuth, { type DefaultSession } from "next-auth";
@@ -23,7 +23,7 @@ export const {
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",
-    error: "/auth/error",
+    // error: "/auth/error",
   },
   callbacks: {
     async session({ token, session }) {

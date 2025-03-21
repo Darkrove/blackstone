@@ -11,6 +11,6 @@ export default async function IndexPage() {
   const user = await getCurrentUser();
   return (
     <>
-    <DashboardHeader heading={`Hello, ${user?.name || 'Sajjad Shaikh'} 👋`} ></DashboardHeader> 
+    <DashboardHeader heading={`Hello, ${user?.name} 👋`} ></DashboardHeader> 
     </>
   )}

@@ -31,7 +31,6 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
   });
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false);
-  const [isMicrosoftLoading, setIsMicrosoftLoading] = React.useState<boolean>(false);
   const searchParams = useSearchParams();
 
   async function onSubmit(data: FormData) {
@@ -71,7 +70,7 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
-              disabled={isLoading || isGoogleLoading || isMicrosoftLoading}
+              disabled={isLoading || isGoogleLoading}
               {...register("email")}
             />
             {errors?.email && (
@@ -105,7 +104,7 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
           setIsGoogleLoading(true);
           signIn("google");
         }}
-        disabled={isLoading || isGoogleLoading || isMicrosoftLoading}
+        disabled={isLoading || isGoogleLoading}
       >
         {isGoogleLoading ? (
           <Icons.spinner className="mr-2 size-4 animate-spin" />
