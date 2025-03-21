@@ -4,7 +4,7 @@ export const protectedConfig: ProtectedConfig = {
   mainNav: [
     {
         title: "Dashboard",
-        href: "/Dashboard",
+        href: "/dashboard",
       },
       {
         title: "Analytics",

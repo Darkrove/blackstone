@@ -11,6 +11,8 @@ interface ProtectedLayoutProps {
 export default async function Dashboard({ children }: ProtectedLayoutProps) {
   const user = await getCurrentUser();
   
+  if (!user) redirect("/login");
+  
   return (
     <div >
         <main className="px-4 flex justify-center items-center">
