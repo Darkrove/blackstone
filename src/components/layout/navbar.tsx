@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
+import { useSelectedLayoutSegment, usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 
 import { siteConfig } from "@/config/site";
@@ -15,6 +15,7 @@ import { Icons } from "@/components/shared/icons";
 import MaxWidthWrapper from "@/components/shared/max-width-wrapper";
 import { MainNavItem } from "@/types";
 import { UserAccountNav } from "./user-account-nav";
+import { ModeToggle } from "./mode-toggle";
 
 interface NavBarProps {
     scroll?: boolean;
@@ -28,6 +29,9 @@ export function NavBar({ scroll = false, links, showAvatar }: NavBarProps) {
     const { data: session, status } = useSession();
     const { setShowSignInModal } = useContext(ModalContext);
     const selectedLayout = useSelectedLayoutSegment();
+    const pathname = usePathname();  // Get the current route
+
+    const isHomePage = pathname === "/"; // Check if on home page
 
     return (
         <header
@@ -68,31 +72,36 @@ export function NavBar({ scroll = false, links, showAvatar }: NavBarProps) {
                 </div>
 
                 <div className="flex items-center space-x-3">
-                    {showAvatar && session ? (
-                        <UserAccountNav />
-                    ) : (
-                        <>
-                            {session ? (
-                                <Link href={session.user.role === "ADMIN" ? "/admin" : "/dashboard"} className="hidden md:block">
-                                    <Button className="gap-2 px-4" variant="default" size="sm" rounded="xl">
-                                        <span>Dashboard</span>
-                                    </Button>
-                                </Link>
-                            ) : status === "unauthenticated" ? (
-                                <Button
-                                    className="hidden gap-2 px-4 md:flex"
-                                    variant="default"
-                                    size="sm"
-                                    rounded="lg"
-                                    onClick={() => setShowSignInModal(true)}
-                                >
-                                    <span>Sign In</span>
-                                    <Icons.arrowRight className="size-4" />
+                    {/* Show Sign In & Dashboard on home page, but User Nav on other pages */}
+                    {isHomePage ? (
+                        session ? (
+                            <Link href={session.user.role === "ADMIN" ? "/admin" : "/dashboard"} className="hidden md:block">
+                                <Button className="gap-2 px-4" variant="default" size="sm" rounded="xl">
+                                    <span>Dashboard</span>
                                 </Button>
-                            ) : (
-                                <Skeleton className="hidden h-9 w-24 rounded-xl lg:flex" />
-                            )}
-                        </>
+                            </Link>
+                        ) : status === "unauthenticated" ? (
+                            <Button
+                                className="hidden gap-2 px-4 md:flex"
+                                variant="default"
+                                size="sm"
+                                rounded="lg"
+                                onClick={() => setShowSignInModal(true)}
+                            >
+                                <span>Sign In</span>
+                                <Icons.arrowRight className="size-4" />
+                            </Button>
+                        ) : (
+                            <Skeleton className="hidden h-9 w-24 rounded-xl lg:flex" />
+                        )
+                    ) : (
+                        // Show user profile navigation when inside the dashboard
+                        showAvatar && session && (
+                            <div className="flex item-center gap-4">
+                                <ModeToggle />
+                                <UserAccountNav />
+                            </div>
+                        )
                     )}
                 </div>
             </MaxWidthWrapper>
