@@ -41,6 +41,9 @@ importers:
       '@vercel/og':
         specifier: ^0.6.2
         version: 0.6.5
+      blackstone:
+        specifier: 'link:'
+        version: 'link:'
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
