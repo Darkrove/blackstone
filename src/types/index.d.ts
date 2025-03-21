@@ -9,3 +9,13 @@ export type SiteConfig = {
     github: string;
   };
 };
+
+export type MainNavItem = NavItem;
+
+export type MarketingConfig = {
+  mainNav: MainNavItem[];
+};
+
+export type ProtectedConfig = {
+  mainNav: MainNavItem[];
+};
