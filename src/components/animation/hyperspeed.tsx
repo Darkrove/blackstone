@@ -1,4 +1,5 @@
-"use client"
+'use client'
+
 import { useEffect, useRef, FC } from "react";
 import * as THREE from "three";
 import {
@@ -1274,7 +1275,7 @@ const Hyperspeed: FC<HyperspeedProps> = ({ effectOptions = {} }) => {
   return (
     <div
       id="lights"
-      className="w-full h-full"
+      className="flex w-full h-full"
       ref={hyperspeed}
     ></div>
   );
