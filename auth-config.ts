@@ -1,14 +1,8 @@
 import type { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import Resend from "next-auth/providers/resend";
-import AzureADProvider from "next-auth/providers/azure-ad";
 
 import { env } from "./env.mjs";
-
-// import { siteConfig } from "@/config/site"
-// import { getUserByEmail } from "@/lib/user";
-// import MagicLinkEmail from "@/emails/magic-link-email"
-// import { prisma } from "@/lib/db"
 
 export default {
   providers: [
