@@ -36,6 +36,8 @@ import {
     X,
     UsersRound,
   } from "lucide-react";
+
+  import { FaMicrosoft } from "react-icons/fa";
   
   export type Icon = LucideIcon;
   
@@ -44,6 +46,7 @@ import {
     arrowRight: ArrowRight,
     arrowUpRight: ArrowUpRight,
     chevronLeft: ChevronLeft,
+    microsoft: FaMicrosoft,
     chevronRight: ChevronRight,
     bookOpen: BookOpen,
     table: Table,
