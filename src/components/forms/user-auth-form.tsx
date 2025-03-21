@@ -114,22 +114,6 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
         )}{" "}
         Google
       </button>
-      <button
-        type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
-        onClick={() => {
-          setIsMicrosoftLoading(true);
-          signIn("azure-ad");
-        }}
-        disabled={isLoading || isGoogleLoading || isMicrosoftLoading}
-      >
-        {isMicrosoftLoading ? (
-          <Icons.spinner className="mr-2 size-4 animate-spin" />
-        ) : (
-          <Icons.microsoft className="mr-2 size-4" />
-        )}{" "}
-        Microsoft
-      </button>
     </div>
   );
 }

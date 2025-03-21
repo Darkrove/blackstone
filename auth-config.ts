@@ -16,11 +16,6 @@ export default {
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
-    AzureADProvider({
-      clientId: process.env.AZURE_AD_CLIENT_ID,
-      clientSecret: process.env.AZURE_AD_CLIENT_SECRET,
-      tenantId: process.env.AZURE_AD_TENANT_ID,
-    }),
     Resend({
       apiKey: env.RESEND_API_KEY,
       from: "Famous Bag <famous-bag@resend.dev>",
