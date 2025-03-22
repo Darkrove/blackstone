@@ -35,6 +35,9 @@ import {
     User,
     X,
     UsersRound,
+    Clock,
+    Target,
+    Award
   } from "lucide-react";
 
   import { FaMicrosoft } from "react-icons/fa";
@@ -43,6 +46,9 @@ import {
   
   export const Icons = {
     add: Plus,
+    clock: Clock,
+    target: Target,
+    award: Award,
     arrowRight: ArrowRight,
     arrowUpRight: ArrowUpRight,
     chevronLeft: ChevronLeft,
