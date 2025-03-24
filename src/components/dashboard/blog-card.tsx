@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 interface BlogProps {
   blog: {
@@ -13,13 +14,15 @@ interface BlogProps {
 
 export function BlogCard({ blog }: BlogProps) {
   return (
-    <Card className="overflow-hidden h-full">
+    <Card className="overflow-hidden h-full p-0">
       <div className="relative h-48 w-full">
         <Image src={blog.imageUrl || "/placeholder.svg"} alt={blog.title} fill className="object-cover" />
       </div>
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-medium text-primary">{blog.category}</span>
+          <Badge variant="secondary" size="sm">
+            {blog.category}
+          </Badge>
           <span className="text-xs text-muted-foreground">{blog.date}</span>
         </div>
         <h3 className="font-medium mb-2 line-clamp-2 text-foreground">{blog.title}</h3>

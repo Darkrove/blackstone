@@ -20,7 +20,7 @@ export default async function IndexPage() {
         <StatsCards />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-        <div className="md:col-span-2 bg-card rounded-lg shadow p-6">
+        <div className="md:col-span-2">
           <ActivityChart />
         </div>
         <div className="md:col-span-1">

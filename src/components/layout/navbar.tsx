@@ -41,7 +41,7 @@ export function NavBar({ scroll = false, links, showAvatar }: NavBarProps) {
             <MaxWidthWrapper
                 className="flex h-full max-w-7xl py-4 gap-4 px-0 lg:gap-6 justify-between items-center"
             >
-                <div className="flex gap-6 md:gap-10">
+                <div className="flex gap-6 md:gap-10 text-foreground">
                     <Link href="/" className="flex items-center space-x-1.5">
                         <Icons.logo className="size-6" />
                         <span className="font-satoshi text-xl font-bold">
