@@ -7,7 +7,6 @@ import { getPOIs } from "@/lib/mock-data" // Updated import
 import { Button } from "@/components/ui/button"
 import { LoadingSpinner } from "@/components/quiz/loading-spinner"
 import { Card, CardContent } from "@/components/ui/card"
-import { Skeleton } from "@/components/ui/skeleton"
 
 export default function QuizStartPage() {
   const router = useRouter()
@@ -50,6 +49,10 @@ export default function QuizStartPage() {
 
     checkAndInitialize()
   }, [initializeQuiz, setCanAttemptToday])
+
+  if (isLoading) {
+    return <LoadingSpinner />
+  }
 
   const handleStart = () => {
     router.push("/dashboard/quiz/question")

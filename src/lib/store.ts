@@ -1,16 +1,5 @@
 import { create } from "zustand"
-
-export interface POI {
-  id: string
-  name: string
-  type: string
-  coins: number
-  address: string
-  googleMapsUrl: string
-  mapCreatorUrl: string
-  googleDriveUrl: string
-  mapCreatorDriveUrl: string
-}
+import { POI } from "@/lib/mock-data"
 
 interface QuizState {
   // State

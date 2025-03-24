@@ -94,9 +94,9 @@ export default function QuizQuestionPage() {
     try {
       // Mark as completed for today
       localStorage.setItem("lastAttemptDate", new Date().toISOString().split("T")[0])
-      localStorage.setItem("quizReposnses", JSON.stringify(answers))
 
       // Submit answers to server
+      localStorage.setItem("quizReposnses", JSON.stringify(answers))
       await submitQuizAnswers(answers)
 
       // Reset quiz and redirect to completion page
@@ -114,11 +114,10 @@ export default function QuizQuestionPage() {
 
     const poiAnswers = answers[currentPOI.id] || {}
     const requiredQuestions = [
-      "Can you find the location of place?",
-      "Is this place currently open?",
-      "Can you find any recent reviews (last 6 months)?",
-      "Does this place have vehicle parking?",
-      "Do they accept cash and card payments?",
+      "Can you find any online evidence, such as Google Street View or Official website details, confirming this place is still Open ?",
+      "Are there any recent reviews (from the past six months) for this place on any platforms ?",
+      "Can this place be verified as Open through well known third-party platform (e.g. Yelp, TripAdvisor or Any similar website)?",
+      "If reviews or information are unavailable, does the place appear Open based on any images (e.g., Google images, Social Media or Any other platform )?",
     ]
 
     return requiredQuestions.every((q) => poiAnswers[q])

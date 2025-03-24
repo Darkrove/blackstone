@@ -15,29 +15,18 @@ import {
 
 import { Check, X, HelpCircle, LinkIcon } from "lucide-react"
 import { Badge } from "../ui/badge"
-
-interface POI {
-  id: string
-  name: string
-  type: string
-  coins: number
-  address: string
-  googleMapsUrl: string
-  mapCreatorUrl: string
-  googleDriveUrl: string
-  mapCreatorDriveUrl: string
-}
+import MapCard from "./map-card"
+import { POI } from "@/lib/mock-data"
 
 export default function QuizCard({ poi }: { poi: POI }) {
   const { setAnswer, answers } = useQuizStore()
   const [referenceUrl, setReferenceUrl] = useState(answers[poi.id]?.referenceUrl || "")
 
   const questions = [
-    "Can you find the location of place?",
-    "Is this place currently open?",
-    "Can you find any recent reviews (last 6 months)?",
-    "Does this place have vehicle parking?",
-    "Do they accept cash and card payments?",
+    "Can you find any online evidence, such as Google Street View or Official website details, confirming this place is still Open ?",
+    "Are there any recent reviews (from the past six months) for this place on any platforms ?",
+    "Can this place be verified as Open through well known third-party platform (e.g. Yelp, TripAdvisor or Any similar website)?",
+    "If reviews or information are unavailable, does the place appear Open based on any images (e.g., Google images, Social Media or Any other platform )?",
   ]
 
   const handleAnswer = (question: string, answer: "yes" | "no" | "notsure") => {
@@ -74,74 +63,15 @@ export default function QuizCard({ poi }: { poi: POI }) {
       <CardContent className="border-t">
         {/* Map Views */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4 px-0 sm:px-4">
-          <div className="bg-primary rounded-lg overflow-hidden">
-            <div className="bg-primary px-3 py-1.5 flex items-center">
-              <div className="w-4 h-4 mr-2 bg-primary-foreground rounded-sm"></div>
-              <span className="text-sm text-primary-foreground">Google Maps</span>
-            </div>
-            <div className="relative h-40 w-full">
-              <Image
-                src={poi.googleMapsUrl || "/placeholder.svg?height=160&width=320"}
-                alt="Google Maps view"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-
-          <div className="bg-primary rounded-lg overflow-hidden">
-            <div className="bg-primary px-3 py-1.5 flex items-center">
-              <div className="w-4 h-4 mr-2 bg-primary-foreground rounded-sm"></div>
-              <span className="text-sm text-primary-foreground">MapCreator</span>
-            </div>
-            <div className="relative h-40 w-full">
-              <Image
-                src={poi.mapCreatorUrl || "/placeholder.svg?height=160&width=320"}
-                alt="MapCreator view"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-
-          <div className="bg-primary rounded-lg overflow-hidden">
-            <div className="bg-primary px-3 py-1.5 flex items-center">
-              <div className="w-4 h-4 mr-2 bg-primary-foreground rounded-sm"></div>
-              <span className="text-sm text-primary-foreground">Google Drive</span>
-            </div>
-            <div className="relative h-40 w-full">
-              <Image
-                src={poi.googleDriveUrl || "/placeholder.svg?height=160&width=320"}
-                alt="Google Drive view"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
-
-          <div className="bg-primary rounded-lg overflow-hidden">
-            <div className="bg-primary px-3 py-1.5 flex items-center">
-              <div className="w-4 h-4 mr-2 bg-primary-foreground rounded-sm"></div>
-              <span className="text-sm text-primary-foreground">Map Creator Drive</span>
-            </div>
-            <div className="relative h-40 w-full">
-              <Image
-                src={poi.mapCreatorDriveUrl || "/placeholder.svg?height=160&width=320"}
-                alt="Map Creator Drive view"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
-          </div>
+          <MapCard title="Google Maps" imageUrl={poi.googleMapsUrl}  linkUrl={`https://www.google.com/maps/search/${poi.displayLatitude},${poi.displayLongitude}`}/>
+          <MapCard title="Map Creator" imageUrl={poi.mapCreatorUrl} linkUrl={`https://community.in.here.com/?l=${poi.displayLatitude},${poi.displayLongitude},18,satellite`} />
+          <MapCard title="Google Drive" imageUrl={poi.googleDriveUrl} linkUrl={`https://www.google.com/maps?q=&layer=c&cbll=${poi.displayLatitude},${poi.displayLongitude}`} />
+          <MapCard title="Map Creator Drive" imageUrl={poi.mapCreatorDriveUrl} linkUrl={`https://www.mapillary.com/app/?pKey=848009734071752&focus=photo&lat=${poi.displayLatitude}&lng=${poi.displayLongitude}&z=17`} />
         </div>
         {/* Questions */}
         <div className="py-4 px-0 sm:px-4 space-y-3">
           {questions.map((question, index) => (
-            <div key={index} className="rounded-lg p-3 border flex justify-between items-center">
+            <div key={index} className="rounded-lg p-3 border flex flex-col sm:flex-row justify-between gap-2 items-center text-center sm:text-left">
               <div className="text-sm">{question}</div>
               <div className="flex space-x-2">
                 <TooltipProvider>

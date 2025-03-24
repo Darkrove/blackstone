@@ -4,6 +4,10 @@ export interface POI {
     type: string;
     coins: number;
     address: string;
+    displayLatitude: number;
+    displayLongitude: number;
+    routingLatitude: number;
+    routingLongitude: number;
     googleMapsUrl: string;
     mapCreatorUrl: string;
     googleDriveUrl: string;
@@ -18,6 +22,10 @@ export interface POI {
       type: "Restaurant",
       coins: 10,
       address: "133 W Oak St, Louisville, KY 40203, United States",
+      displayLatitude: 3.099256,
+      displayLongitude: 101.6351,
+      routingLatitude: 38.2484,
+      routingLongitude: -85.7865,
       googleMapsUrl: "/placeholder.svg?height=160&width=320",
       mapCreatorUrl: "/placeholder.svg?height=160&width=320",
       googleDriveUrl: "/placeholder.svg?height=160&width=320",
@@ -29,6 +37,10 @@ export interface POI {
       type: "Cafe",
       coins: 15,
       address: "456 Main St, Louisville, KY 40202, United States",
+      displayLatitude: 38.2562,
+      displayLongitude: -85.7517,
+      routingLatitude: 38.2562,
+      routingLongitude: -85.7517,
       googleMapsUrl: "/placeholder.svg?height=160&width=320",
       mapCreatorUrl: "/placeholder.svg?height=160&width=320",
       googleDriveUrl: "/placeholder.svg?height=160&width=320",
@@ -40,6 +52,10 @@ export interface POI {
       type: "Grocery",
       coins: 12,
       address: "789 Broadway, Louisville, KY 40204, United States",
+      displayLatitude: 38.2572,
+      displayLongitude: -85.7339,
+      routingLatitude: 38.2572,
+      routingLongitude: -85.7339,
       googleMapsUrl: "/placeholder.svg?height=160&width=320",
       mapCreatorUrl: "/placeholder.svg?height=160&width=320",
       googleDriveUrl: "/placeholder.svg?height=160&width=320",
