@@ -46,23 +46,6 @@ export default function Home() {
             <span>Login</span>
             <Icons.arrowRight className="ml-2 size-4" />
           </Link>
-          <Link
-            href="https://github.com/mickasmt/next-auth-roles-template"
-            target="_blank"
-            rel="noreferrer"
-            className={cn(
-              buttonVariants({
-                variant: "outline",
-                rounded: "xl",
-                size: "lg",
-              }),
-              "w-full text-[15px]",
-            )}
-          >
-            <Icons.gitHub className="mr-2 size-4" />
-
-            <span>GitHub</span>
-          </Link>
         </div>
       </div>
     </div>
